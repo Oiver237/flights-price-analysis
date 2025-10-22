@@ -1,0 +1,993 @@
+{
+  "search_metadata": {
+    "id": "68f887753d40b6809ee182c1",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/a2c6b971c59763fc/68f887753d40b6809ee182c1.json",
+    "created_at": "2025-10-22 07:27:49 UTC",
+    "processed_at": "2025-10-22 07:27:49 UTC",
+    "google_flights_url": "https://www.google.com/travel/flights?hl=fr&gl=us&curr=EUR&tfs=CBwQAhoeEgoyMDI1LTExLTIxagcIARIDQ0RHcgcIARIDQkVSGh4SCjIwMjUtMTEtMjZqBwgBEgNCRVJyBwgBEgNDREdCAQFIAXABmAEB&tfu=EgIIAQ",
+    "raw_html_file": "https://serpapi.com/searches/a2c6b971c59763fc/68f887753d40b6809ee182c1.html",
+    "prettify_html_file": "https://serpapi.com/searches/a2c6b971c59763fc/68f887753d40b6809ee182c1.prettify",
+    "total_time_taken": 0.87
+  },
+  "search_parameters": {
+    "engine": "google_flights",
+    "hl": "fr",
+    "gl": "us",
+    "departure_id": "CDG",
+    "arrival_id": "BER",
+    "outbound_date": "2025-11-21",
+    "return_date": "2025-11-26",
+    "currency": "EUR"
+  },
+  "best_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 07:00"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 08:50"
+          },
+          "duration": 110,
+          "airplane": "Airbus A220-300 Passenger",
+          "airline": "Air France",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+          "travel_class": "Economy",
+          "flight_number": "AF 1434",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 97 kg"
+          ]
+        }
+      ],
+      "total_duration": 110,
+      "carbon_emissions": {
+        "this_flight": 98000,
+        "typical_for_this_route": 99000,
+        "difference_percent": -1
+      },
+      "price": 142,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Fare non-refundable, taxes may be refundable",
+        "Ticket changes for a fee",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZ1pCUmpFME16UWFDZ2liYmhBQ0dnTkZWVkk0SEhEeWZ3PT0iLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJCRVIiLG51bGwsIkFGIiwiMTQzNCJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 09:40"
+          },
+          "arrival_airport": {
+            "name": "Amsterdam Airport Schiphol",
+            "id": "AMS",
+            "time": "2025-11-21 11:05"
+          },
+          "duration": 85,
+          "airplane": "Airbus A321neo",
+          "airline": "KLM",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+          "travel_class": "Economy",
+          "flight_number": "KL 1404",
+          "legroom": "74 cm",
+          "extensions": [
+            "Below average legroom (74 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 41 kg"
+          ]
+        },
+        {
+          "departure_airport": {
+            "name": "Amsterdam Airport Schiphol",
+            "id": "AMS",
+            "time": "2025-11-21 12:15"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 13:30"
+          },
+          "duration": 75,
+          "airplane": "Airbus A321neo",
+          "airline": "KLM",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+          "travel_class": "Economy",
+          "flight_number": "KL 1777",
+          "legroom": "74 cm",
+          "extensions": [
+            "Below average legroom (74 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 52 kg"
+          ]
+        }
+      ],
+      "layovers": [
+        {
+          "duration": 70,
+          "name": "Amsterdam Airport Schiphol",
+          "id": "AMS"
+        }
+      ],
+      "total_duration": 230,
+      "carbon_emissions": {
+        "this_flight": 94000,
+        "typical_for_this_route": 99000,
+        "difference_percent": -5
+      },
+      "price": 166,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Full refund for cancellations",
+        "Free change, possible fare difference",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZzFMVERFME1EUjhTMHd4TnpjM0dnc0lzb0VCRUFJYUEwVlZVamdjY0pPV0FRPT0iLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJBTVMiLG51bGwsIktMIiwiMTQwNCJdLFsiQU1TIiwiMjAyNS0xMS0yMSIsIkJFUiIsbnVsbCwiS0wiLCIxNzc3Il1dXQ=="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 20:55"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 22:40"
+          },
+          "duration": 105,
+          "airplane": "Airbus A220-300 Passenger",
+          "airline": "Air France",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+          "travel_class": "Economy",
+          "flight_number": "AF 1134",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 97 kg"
+          ]
+        }
+      ],
+      "total_duration": 105,
+      "carbon_emissions": {
+        "this_flight": 98000,
+        "typical_for_this_route": 99000,
+        "difference_percent": -1
+      },
+      "price": 172,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Full refund for cancellations",
+        "Free change, possible fare difference",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZ1pCUmpFeE16UWFDd2pUaFFFUUFob0RSVlZTT0J4d2pKc0IiLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJCRVIiLG51bGwsIkFGIiwiMTEzNCJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 15:10"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 16:55"
+          },
+          "duration": 105,
+          "airplane": "Airbus A220-300 Passenger",
+          "airline": "Air France",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+          "travel_class": "Economy",
+          "flight_number": "AF 1834",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 97 kg"
+          ]
+        }
+      ],
+      "total_duration": 105,
+      "carbon_emissions": {
+        "this_flight": 98000,
+        "typical_for_this_route": 99000,
+        "difference_percent": -1
+      },
+      "price": 183,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Full refund for cancellations",
+        "Free change, possible fare difference",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZ1pCUmpFNE16UWFDd2lmamdFUUFob0RSVlZTT0J4d2lLVUIiLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJCRVIiLG51bGwsIkFGIiwiMTgzNCJdXV0="
+    }
+  ],
+  "other_flights": [
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 16:55"
+          },
+          "arrival_airport": {
+            "name": "Amsterdam Airport Schiphol",
+            "id": "AMS",
+            "time": "2025-11-21 18:20"
+          },
+          "duration": 85,
+          "airplane": "Airbus A220-300 Passenger",
+          "airline": "Air France",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+          "travel_class": "Economy",
+          "flight_number": "AF 1140",
+          "ticket_also_sold_by": [
+            "KLM"
+          ],
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 59 kg"
+          ]
+        },
+        {
+          "departure_airport": {
+            "name": "Amsterdam Airport Schiphol",
+            "id": "AMS",
+            "time": "2025-11-21 21:00"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 22:15"
+          },
+          "duration": 75,
+          "airplane": "Boeing 737",
+          "airline": "KLM",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+          "travel_class": "Economy",
+          "flight_number": "KL 1785",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 63 kg"
+          ],
+          "often_delayed_by_over_30_min": true
+        }
+      ],
+      "layovers": [
+        {
+          "duration": 160,
+          "name": "Amsterdam Airport Schiphol",
+          "id": "AMS"
+        }
+      ],
+      "total_duration": 320,
+      "carbon_emissions": {
+        "this_flight": 123000,
+        "typical_for_this_route": 99000,
+        "difference_percent": 24
+      },
+      "price": 166,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Full refund for cancellations",
+        "Free change, possible fare difference",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZzFCUmpFeE5EQjhTMHd4TnpnMUdnc0lrNEVCRUFJYUEwVlZVamdjY08rVkFRPT0iLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJBTVMiLG51bGwsIkFGIiwiMTE0MCJdLFsiQU1TIiwiMjAyNS0xMS0yMSIsIkJFUiIsbnVsbCwiS0wiLCIxNzg1Il1dXQ=="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 11:10"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Francfort",
+            "id": "FRA",
+            "time": "2025-11-21 12:40"
+          },
+          "duration": 90,
+          "airplane": "Airbus A320",
+          "airline": "Condor",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DE.png",
+          "travel_class": "Economy",
+          "flight_number": "DE 4264",
+          "legroom": "71 cm",
+          "extensions": [
+            "Below average legroom (71 cm)",
+            "Stream media to your device",
+            "Carbon emissions estimate: 60 kg"
+          ]
+        },
+        {
+          "departure_airport": {
+            "name": "Aéroport de Francfort",
+            "id": "FRA",
+            "time": "2025-11-21 14:15"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 15:20"
+          },
+          "duration": 65,
+          "airplane": "Airbus A321 (Sharklets)",
+          "airline": "Condor",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DE.png",
+          "travel_class": "Economy",
+          "flight_number": "DE 4075",
+          "legroom": "74 cm",
+          "extensions": [
+            "Below average legroom (74 cm)",
+            "Stream media to your device",
+            "Carbon emissions estimate: 59 kg"
+          ]
+        }
+      ],
+      "layovers": [
+        {
+          "duration": 95,
+          "name": "Aéroport de Francfort",
+          "id": "FRA"
+        }
+      ],
+      "total_duration": 250,
+      "carbon_emissions": {
+        "this_flight": 120000,
+        "typical_for_this_route": 99000,
+        "difference_percent": 21
+      },
+      "price": 173,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/DE.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Fare non-refundable, taxes may be refundable",
+        "Ticket changes for a fee",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZzFFUlRReU5qUjhSRVUwTURjMUdnc0lrb2NCRUFJYUEwVlZVamdjY09tY0FRPT0iLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJGUkEiLG51bGwsIkRFIiwiNDI2NCJdLFsiRlJBIiwiMjAyNS0xMS0yMSIsIkJFUiIsbnVsbCwiREUiLCI0MDc1Il1dXQ=="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 17:20"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 19:05"
+          },
+          "duration": 105,
+          "airplane": "Embraer 190",
+          "airline": "Air France",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+          "travel_class": "Economy",
+          "flight_number": "AF 1534",
+          "legroom": "79 cm",
+          "extensions": [
+            "Average legroom (79 cm)",
+            "Carbon emissions estimate: 123 kg"
+          ],
+          "plane_and_crew_by": "HOP!"
+        }
+      ],
+      "total_duration": 105,
+      "carbon_emissions": {
+        "this_flight": 124000,
+        "typical_for_this_route": 99000,
+        "difference_percent": 25
+      },
+      "price": 194,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Fare non-refundable, taxes may be refundable",
+        "Ticket changes for a fee",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZ1pCUmpFMU16UWFDd2l2bHdFUUFob0RSVlZTT0J4dzFLOEIiLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJCRVIiLG51bGwsIkFGIiwiMTUzNCJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 14:20"
+          },
+          "arrival_airport": {
+            "name": "Amsterdam Airport Schiphol",
+            "id": "AMS",
+            "time": "2025-11-21 15:40"
+          },
+          "duration": 80,
+          "airplane": "Airbus A220-300 Passenger",
+          "airline": "Air France",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+          "travel_class": "Economy",
+          "flight_number": "AF 1840",
+          "ticket_also_sold_by": [
+            "KLM"
+          ],
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 59 kg"
+          ]
+        },
+        {
+          "departure_airport": {
+            "name": "Amsterdam Airport Schiphol",
+            "id": "AMS",
+            "time": "2025-11-21 16:30"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 17:40"
+          },
+          "duration": 70,
+          "airplane": "Boeing 737",
+          "airline": "KLM",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+          "travel_class": "Economy",
+          "flight_number": "KL 1781",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Carbon emissions estimate: 62 kg"
+          ],
+          "often_delayed_by_over_30_min": true
+        }
+      ],
+      "layovers": [
+        {
+          "duration": 50,
+          "name": "Amsterdam Airport Schiphol",
+          "id": "AMS"
+        }
+      ],
+      "total_duration": 200,
+      "carbon_emissions": {
+        "this_flight": 122000,
+        "typical_for_this_route": 99000,
+        "difference_percent": 23
+      },
+      "price": 198,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Fare non-refundable, taxes may be refundable",
+        "Ticket changes for a fee",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZzFCUmpFNE5EQjhTMHd4TnpneEdnc0lrNW9CRUFJYUEwVlZVamdjY1BHeUFRPT0iLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJBTVMiLG51bGwsIkFGIiwiMTg0MCJdLFsiQU1TIiwiMjAyNS0xMS0yMSIsIkJFUiIsbnVsbCwiS0wiLCIxNzgxIl1dXQ=="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 08:45"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Francfort",
+            "id": "FRA",
+            "time": "2025-11-21 10:00"
+          },
+          "duration": 75,
+          "airplane": "Airbus A320",
+          "airline": "Lufthansa",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/LH.png",
+          "travel_class": "Economy",
+          "flight_number": "LH 1027",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Carbon emissions estimate: 64 kg"
+          ]
+        },
+        {
+          "departure_airport": {
+            "name": "Aéroport de Francfort",
+            "id": "FRA",
+            "time": "2025-11-21 10:45"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 11:50"
+          },
+          "duration": 65,
+          "airplane": "Airbus A319",
+          "airline": "Lufthansa",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/LH.png",
+          "travel_class": "Economy",
+          "flight_number": "LH 180",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Wi-Fi for a fee",
+            "Carbon emissions estimate: 71 kg"
+          ]
+        }
+      ],
+      "layovers": [
+        {
+          "duration": 45,
+          "name": "Aéroport de Francfort",
+          "id": "FRA"
+        }
+      ],
+      "total_duration": 185,
+      "carbon_emissions": {
+        "this_flight": 136000,
+        "typical_for_this_route": 99000,
+        "difference_percent": 37
+      },
+      "price": 210,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/LH.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Full refund for cancellations",
+        "Free change, possible fare difference",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZ3hNU0RFd01qZDhURWd4T0RBYUN3aUlwQUVRQWhvRFJWVlNPQnh3c2I0QiIsW1siQ0RHIiwiMjAyNS0xMS0yMSIsIkZSQSIsbnVsbCwiTEgiLCIxMDI3Il0sWyJGUkEiLCIyMDI1LTExLTIxIiwiQkVSIixudWxsLCJMSCIsIjE4MCJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 13:45"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 15:30"
+          },
+          "duration": 105,
+          "airplane": "Airbus A220-300 Passenger",
+          "airline": "Air France",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+          "travel_class": "Economy",
+          "flight_number": "AF 1234",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 97 kg"
+          ]
+        }
+      ],
+      "total_duration": 105,
+      "carbon_emissions": {
+        "this_flight": 98000,
+        "typical_for_this_route": 99000,
+        "difference_percent": -1
+      },
+      "price": 232,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Fare non-refundable, taxes may be refundable",
+        "Ticket changes for a fee",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZ1pCUmpFeU16UWFDd2pEdEFFUUFob0RSVlZTT0J4d3Z0RUIiLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJCRVIiLG51bGwsIkFGIiwiMTIzNCJdXV0="
+    },
+    {
+      "flights": [
+        {
+          "departure_airport": {
+            "name": "Aéroport de Paris-Charles de Gaulle",
+            "id": "CDG",
+            "time": "2025-11-21 09:35"
+          },
+          "arrival_airport": {
+            "name": "Aéroport de Berlin-Brandebourg",
+            "id": "BER",
+            "time": "2025-11-21 11:20"
+          },
+          "duration": 105,
+          "airplane": "Airbus A220-300 Passenger",
+          "airline": "Air France",
+          "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+          "travel_class": "Economy",
+          "flight_number": "AF 1734",
+          "legroom": "76 cm",
+          "extensions": [
+            "Average legroom (76 cm)",
+            "Wi-Fi for a fee",
+            "In-seat USB outlet",
+            "Carbon emissions estimate: 97 kg"
+          ]
+        }
+      ],
+      "total_duration": 105,
+      "carbon_emissions": {
+        "this_flight": 98000,
+        "typical_for_this_route": 99000,
+        "difference_percent": -1
+      },
+      "price": 253,
+      "type": "Round trip",
+      "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+      "extensions": [
+        "Checked baggage for a fee",
+        "Fare non-refundable, taxes may be refundable",
+        "Ticket changes for a fee",
+        "Bag and fare conditions depend on the return flight"
+      ],
+      "departure_token": "WyJDalJJTldKblJXczJZM3AyWjBGQlFqRkZhR2RDUnkwdExTMHRMUzB0TFhCcWEyc3hNa0ZCUVVGQlIybzBhRE5aUTFKWFJVTkJFZ1pCUmpFM016UWFDd2ozeEFFUUFob0RSVlZTT0J4d3crUUIiLFtbIkNERyIsIjIwMjUtMTEtMjEiLCJCRVIiLG51bGwsIkFGIiwiMTczNCJdXV0="
+    }
+  ],
+  "price_insights": {
+    "lowest_price": 142,
+    "price_level": "typical",
+    "typical_price_range": [
+      100,
+      195
+    ],
+    "price_history": [
+      [
+        1755900000,
+        133
+      ],
+      [
+        1755986400,
+        133
+      ],
+      [
+        1756072800,
+        133
+      ],
+      [
+        1756159200,
+        133
+      ],
+      [
+        1756245600,
+        133
+      ],
+      [
+        1756332000,
+        133
+      ],
+      [
+        1756418400,
+        133
+      ],
+      [
+        1756504800,
+        133
+      ],
+      [
+        1756591200,
+        133
+      ],
+      [
+        1756677600,
+        133
+      ],
+      [
+        1756764000,
+        127
+      ],
+      [
+        1756850400,
+        127
+      ],
+      [
+        1756936800,
+        127
+      ],
+      [
+        1757023200,
+        127
+      ],
+      [
+        1757109600,
+        127
+      ],
+      [
+        1757196000,
+        127
+      ],
+      [
+        1757282400,
+        122
+      ],
+      [
+        1757368800,
+        122
+      ],
+      [
+        1757455200,
+        122
+      ],
+      [
+        1757541600,
+        122
+      ],
+      [
+        1757628000,
+        122
+      ],
+      [
+        1757714400,
+        122
+      ],
+      [
+        1757800800,
+        122
+      ],
+      [
+        1757887200,
+        122
+      ],
+      [
+        1757973600,
+        122
+      ],
+      [
+        1758060000,
+        123
+      ],
+      [
+        1758146400,
+        123
+      ],
+      [
+        1758232800,
+        123
+      ],
+      [
+        1758319200,
+        123
+      ],
+      [
+        1758405600,
+        123
+      ],
+      [
+        1758492000,
+        123
+      ],
+      [
+        1758578400,
+        124
+      ],
+      [
+        1758664800,
+        124
+      ],
+      [
+        1758751200,
+        127
+      ],
+      [
+        1758837600,
+        127
+      ],
+      [
+        1758924000,
+        124
+      ],
+      [
+        1759010400,
+        127
+      ],
+      [
+        1759096800,
+        133
+      ],
+      [
+        1759183200,
+        133
+      ],
+      [
+        1759269600,
+        136
+      ],
+      [
+        1759356000,
+        124
+      ],
+      [
+        1759442400,
+        132
+      ],
+      [
+        1759528800,
+        132
+      ],
+      [
+        1759615200,
+        132
+      ],
+      [
+        1759701600,
+        132
+      ],
+      [
+        1759788000,
+        132
+      ],
+      [
+        1759874400,
+        123
+      ],
+      [
+        1759960800,
+        123
+      ],
+      [
+        1760047200,
+        123
+      ],
+      [
+        1760133600,
+        123
+      ],
+      [
+        1760220000,
+        123
+      ],
+      [
+        1760306400,
+        124
+      ],
+      [
+        1760392800,
+        132
+      ],
+      [
+        1760479200,
+        132
+      ],
+      [
+        1760565600,
+        132
+      ],
+      [
+        1760652000,
+        132
+      ],
+      [
+        1760738400,
+        137
+      ],
+      [
+        1760824800,
+        137
+      ],
+      [
+        1760911200,
+        137
+      ],
+      [
+        1760997600,
+        137
+      ],
+      [
+        1761084000,
+        142
+      ]
+    ]
+  },
+  "airports": [
+    {
+      "departure": [
+        {
+          "airport": {
+            "id": "CDG",
+            "name": "Aéroport de Paris-Charles de Gaulle"
+          },
+          "city": "Paris",
+          "country": "France",
+          "country_code": "FR",
+          "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGx8ii2KbSDdbdzfKye5oDN2bwBA6audqI7XUEf2iMRZezpn_ZbQe1ZIuvUSH-8XOMe958umDwSsAF1w",
+          "thumbnail": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyQJ-woNs0iO22mPSkmRUM5gcsTbbYeypQ6BBTeFxXr90mqTxZl57Fdq2CDuLn4w7cKZ8TT9_zZhOpF57rIpA7yWKQnqKvkKIf9Y-qJDo"
+        }
+      ],
+      "arrival": [
+        {
+          "airport": {
+            "id": "BER",
+            "name": "Aéroport de Berlin-Brandebourg"
+          },
+          "city": "Berlin",
+          "country": "Allemagne",
+          "country_code": "DE",
+          "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQt2sQ7Aqn9XDqztmoYElQwE26oMklrcGD7-ZuKOUPZVDpWlL-yn0uHraRpfjA9kXtiLrBxI-YW45Rn4g",
+          "thumbnail": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTWlCvQfTpTUuTsCeI1S4Yw2Y5H4T77pM--xjPOa8J2BBUf2IPwdlOWEEgXN-UK1iZEuid20zbzO_nW3qSbU4dk9KwrbnjlUxopo6ayjnY"
+        }
+      ]
+    },
+    {
+      "departure": [
+        {
+          "airport": {
+            "id": "BER",
+            "name": "Aéroport de Berlin-Brandebourg"
+          },
+          "city": "Berlin",
+          "country": "Allemagne",
+          "country_code": "DE",
+          "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQt2sQ7Aqn9XDqztmoYElQwE26oMklrcGD7-ZuKOUPZVDpWlL-yn0uHraRpfjA9kXtiLrBxI-YW45Rn4g",
+          "thumbnail": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTWlCvQfTpTUuTsCeI1S4Yw2Y5H4T77pM--xjPOa8J2BBUf2IPwdlOWEEgXN-UK1iZEuid20zbzO_nW3qSbU4dk9KwrbnjlUxopo6ayjnY"
+        }
+      ],
+      "arrival": [
+        {
+          "airport": {
+            "id": "CDG",
+            "name": "Aéroport de Paris-Charles de Gaulle"
+          },
+          "city": "Paris",
+          "country": "France",
+          "country_code": "FR",
+          "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGx8ii2KbSDdbdzfKye5oDN2bwBA6audqI7XUEf2iMRZezpn_ZbQe1ZIuvUSH-8XOMe958umDwSsAF1w",
+          "thumbnail": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyQJ-woNs0iO22mPSkmRUM5gcsTbbYeypQ6BBTeFxXr90mqTxZl57Fdq2CDuLn4w7cKZ8TT9_zZhOpF57rIpA7yWKQnqKvkKIf9Y-qJDo"
+        }
+      ]
+    }
+  ]
+}

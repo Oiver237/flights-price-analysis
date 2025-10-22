@@ -1,0 +1,5 @@
+serpapi
+python-dotenv
+boto3
+pandas
+pyarrow
