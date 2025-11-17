@@ -1,1 +1,10 @@
 .venv/
+.env
+assets/notes.txt
+output.json
+assets/
+__pycache__/
+logs/
+requirements3.txt
+plugins/
+scripts/
