@@ -4,9 +4,13 @@ from datetime import datetime, timedelta
 import json
 import os
 from serpapi.google_search import GoogleSearch
-from loguru import logger
+import logging
 import boto3
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+from airflow.operators.bash import BashOperator
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 default_args = {
     'owner': 'projet-fil-rouge',
@@ -23,7 +27,7 @@ default_args = {
 def download_flight_data(**kwargs):
     API_KEY = os.getenv('API_KEY')
     params = {
-        "api_key": API_KEY,
+        "api_key": f'{API_KEY}',
         "engine": "google_flights",
         "hl": "en",
         "gl": "us",
@@ -79,8 +83,10 @@ def upload_to_s3(**kwargs):
               )
 
     bucket.upload_file(Filename=output_file_path, Key=s3_key)
+    #path for spark job
+    total_s3_key = f's3a://{S3_BUCKET}/{s3_key}'
+    kwargs['ti'].xcom_push(key='total_s3_key', value=total_s3_key)
     logger.info(f'File uploaded successfully to s3://{S3_BUCKET}/{s3_key}')
-
 
 def clean_up_folder(**kwargs):
     ti = kwargs['ti']
@@ -111,15 +117,43 @@ with DAG(
         python_callable=upload_to_s3,
         provide_context=True
     )
+    spark_submit_task = SparkSubmitOperator(
+        task_id='process_json_spark',
+        application='/opt/airflow/dags/scripts/pyspark_job.py',
+        name='flight_data_processing',
+        conn_id='spark_default',
+        verbose=True,
+        conf= {
+            "spark.master": "spark://spark-master:7077",
+            "spark.sql.parquet.compression.codec": "snappy",
+            "spark.sql.adaptive.enabled": "true",
+            "spark.sql.adaptive.coalescePartitions.enabled": "true",
+            "spark.eventLog.enabled": "false",
+            "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
+            "spark.hadoop.fs.s3a.aws.credentials.provider": "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider",
+            "spark.hadoop.fs.s3a.endpoint": "s3.amazonaws.com"
+        },
+        packages="org.apache.hadoop:hadoop-aws:3.3.4,org.apache.hadoop:hadoop-common:3.3.4",
+        application_args=[
+            "{{ ti.xcom_pull(task_ids='upload_raw_data_to_s3', key='total_s3_key') }}"
+        ]
+    )
+    # spark_submit_task = BashOperator(
+    # task_id='process_json_spark',
+    # bash_command='docker exec spark-master /opt/spark/bin/spark-submit '
+    #              '--master spark://spark-master:7077 '
+    #              '--packages org.apache.hadoop:hadoop-aws:3.3.4,org.apache.hadoop:hadoop-common:3.3.4 '
+    #              '--conf spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider '
+    #              '/opt/spark/shared-data/pyspark_job.py '
+    #              '{{ ti.xcom_pull(task_ids="upload_raw_data_to_s3", key="total_s3_key") }}'
+    #             )
     clean_up_task = PythonOperator(
         task_id='clean_up_folder',
         python_callable=clean_up_folder,
         provide_context=True
     )
 
-download_task>>upload_raw_data_task>>clean_up_task
-
-
+download_task >> upload_raw_data_task >> [spark_submit_task, clean_up_task]
 
 
 

@@ -8,6 +8,7 @@ x-airflow-common:
     dockerfile: airflow.Dockerfile
   environment:
     &airflow-common-env
+    AIRFLOW_CONN_SPARK_DEFAULT: spark://@spark-master:7077
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/${POSTGRES_DB}"
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
@@ -18,11 +19,16 @@ x-airflow-common:
     AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
     S3_BUCKET: ${S3_BUCKET}
     S3_RAW_PREFIX: ${S3_RAW_PREFIX}
+    API_KEY: ${API_KEY}
+    SPARK_HOME: /opt/spark
+    SPARK_MASTER_URL: spark://spark-master:7077
+    SPARK_CONNECTION_METHOD: "session"
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/logs:/opt/airflow/logs
     - ./airflow/plugins:/opt/airflow/plugins
     - ./requirements.txt:/opt/airflow/requirements.txt
+    - /var/run/docker.sock:/var/run/docker.sock
   user: "${AIRFLOW_UID}:0"
   depends_on:
     - postgres
@@ -81,6 +87,7 @@ services:
       - "7077:7077"
     environment:
       - SPARK_MASTER_HOST=spark-master
+      - API_KEY=${API_KEY}
       - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
       - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
@@ -116,3 +123,4 @@ volumes:
 
 networks:
   projet-fil-rouge:
+    driver: bridge
