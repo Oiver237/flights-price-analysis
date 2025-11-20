@@ -7,8 +7,7 @@ import os
 from serpapi.google_search import GoogleSearch
 import logging
 import boto3
-from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
-from airflow.operators.bash import BashOperator
+# from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -47,12 +46,6 @@ default_args = {
     'email_on_retry': False,
 
 }
-# AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-# AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-# AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
-# S3_BUCKET = os.getenv('S3_BUCKET')
-# S3_PREFIX = os.getenv('S3_RAW_PREFIX')
-# S3_CLEANSED_PREFIX = os.getenv('S3_CLEANSED_PREFIX')
 
 aws_access_key = os.getenv('AWS_ACCESS_KEY_ID', '')
 aws_secret_key = os.getenv('AWS_SECRET_ACCESS_KEY', '')
@@ -191,16 +184,6 @@ with DAG(
         python_callable=upload_to_s3,
         provide_context=True
     )
-    # spark_submit_task = SparkSubmitOperator(
-    #     task_id='process_json_spark',
-    #     application='/opt/airflow/dags/pyspark_job.py',
-    #     name='flight_data_processing',
-    #     conn_id='spark_default',
-    #     verbose=True,
-    #     application_args=[
-    #         "{{ ti.xcom_pull(task_ids='upload_raw_data_to_s3', key='total_s3_key') }}"
-    #     ]
-    # )
     spark_submit_task = PythonOperator(
     task_id='process_json_spark',
     python_callable=run_spark_job,
