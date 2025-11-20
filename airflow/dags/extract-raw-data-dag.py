@@ -1,3 +1,4 @@
+import subprocess
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
@@ -12,17 +13,52 @@ from airflow.operators.bash import BashOperator
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+
+def validate_environment_variables():
+    """Validate that all required environment variables are set"""
+    required_vars = [
+        'AWS_ACCESS_KEY_ID',
+        'AWS_SECRET_ACCESS_KEY', 
+        'AWS_DEFAULT_REGION',
+        'S3_BUCKET',
+        'S3_RAW_PREFIX',
+        'S3_CLEANSED_PREFIX',
+        'API_KEY'
+    ]
+
+    missing_vars = []
+    for var in required_vars:
+        if not os.getenv(var):
+            missing_vars.append(var)
+    logger.info('No missing env variables')
+
+    if missing_vars:
+        raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
+
+validate_environment_variables()
+
 default_args = {
     'owner': 'projet-fil-rouge',
     'depends_on_past' : False,
     'start_date': datetime(2025,1,1),
     'retries': 2,
-    'retries_delay': timedelta(seconds=30),
+    'retry_delay': timedelta(seconds=30),
     'email_on_failure': False,
     'email_on_retry': False,
 
 }
+# AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+# AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
+# S3_BUCKET = os.getenv('S3_BUCKET')
+# S3_PREFIX = os.getenv('S3_RAW_PREFIX')
+# S3_CLEANSED_PREFIX = os.getenv('S3_CLEANSED_PREFIX')
 
+aws_access_key = os.getenv('AWS_ACCESS_KEY_ID', '')
+aws_secret_key = os.getenv('AWS_SECRET_ACCESS_KEY', '')
+aws_region = os.getenv('AWS_DEFAULT_REGION', 'us-east-1')
+s3_bucket = os.getenv('S3_BUCKET', '')
+s3_cleansed_prefix = os.getenv('S3_CLEANSED_PREFIX', '')
 
 def download_flight_data(**kwargs):
     API_KEY = os.getenv('API_KEY')
@@ -88,6 +124,44 @@ def upload_to_s3(**kwargs):
     kwargs['ti'].xcom_push(key='total_s3_key', value=total_s3_key)
     logger.info(f'File uploaded successfully to s3://{S3_BUCKET}/{s3_key}')
 
+def run_spark_job(**kwargs):
+    ti = kwargs['ti']
+    s3_key = ti.xcom_pull(task_ids='upload_raw_data_to_s3', key='total_s3_key')
+
+    aws_access_key = os.getenv('AWS_ACCESS_KEY_ID')
+    aws_secret_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+    spark_command = [
+        '/opt/spark/bin/spark-submit',
+        '--master', 'spark://spark-master:7077',
+        '--packages', 'org.apache.hadoop:hadoop-aws:3.3.4,org.apache.hadoop:hadoop-common:3.3.4',
+        '--conf', f'spark.hadoop.fs.s3a.access.key={aws_access_key}',
+        '--conf', f'spark.hadoop.fs.s3a.secret.key={aws_secret_key}',
+        '--conf', 'spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider',
+        '--conf', 'spark.hadoop.fs.s3a.endpoint=s3.amazonaws.com',
+        '/opt/airflow/dags/pyspark_job.py',
+        s3_key
+    ]
+    try:
+        result = subprocess.run(
+            spark_command,
+            capture_output=True,
+            text=True,
+            timeout=600
+        )
+        if result.returncode == 0:
+            logger.info('Spark job completed successfully')
+            logger.info(f'Spark output: {result.stdout} ')
+        else:
+            logger.error(f'Spark job failed with return code: {result.returncode}')
+            logger.error(f'Spark stderr: {result.stderr}')
+    except subprocess.TimeoutExpired:
+        logger.error('Spark job timed out after 10 min')
+        raise
+    except Exception as e:
+        logger.error(f'Failed to run spark job due to: {str(e)}')
+        raise
+
+
 def clean_up_folder(**kwargs):
     ti = kwargs['ti']
     output_file_path = ti.xcom_pull(task_ids='download_flight_data', key='output_file_path')
@@ -117,43 +191,27 @@ with DAG(
         python_callable=upload_to_s3,
         provide_context=True
     )
-    spark_submit_task = SparkSubmitOperator(
-        task_id='process_json_spark',
-        application='/opt/airflow/dags/scripts/pyspark_job.py',
-        name='flight_data_processing',
-        conn_id='spark_default',
-        verbose=True,
-        conf= {
-            "spark.master": "spark://spark-master:7077",
-            "spark.sql.parquet.compression.codec": "snappy",
-            "spark.sql.adaptive.enabled": "true",
-            "spark.sql.adaptive.coalescePartitions.enabled": "true",
-            "spark.eventLog.enabled": "false",
-            "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem",
-            "spark.hadoop.fs.s3a.aws.credentials.provider": "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider",
-            "spark.hadoop.fs.s3a.endpoint": "s3.amazonaws.com"
-        },
-        packages="org.apache.hadoop:hadoop-aws:3.3.4,org.apache.hadoop:hadoop-common:3.3.4",
-        application_args=[
-            "{{ ti.xcom_pull(task_ids='upload_raw_data_to_s3', key='total_s3_key') }}"
-        ]
+    # spark_submit_task = SparkSubmitOperator(
+    #     task_id='process_json_spark',
+    #     application='/opt/airflow/dags/pyspark_job.py',
+    #     name='flight_data_processing',
+    #     conn_id='spark_default',
+    #     verbose=True,
+    #     application_args=[
+    #         "{{ ti.xcom_pull(task_ids='upload_raw_data_to_s3', key='total_s3_key') }}"
+    #     ]
+    # )
+    spark_submit_task = PythonOperator(
+    task_id='process_json_spark',
+    python_callable=run_spark_job,
     )
-    # spark_submit_task = BashOperator(
-    # task_id='process_json_spark',
-    # bash_command='docker exec spark-master /opt/spark/bin/spark-submit '
-    #              '--master spark://spark-master:7077 '
-    #              '--packages org.apache.hadoop:hadoop-aws:3.3.4,org.apache.hadoop:hadoop-common:3.3.4 '
-    #              '--conf spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider '
-    #              '/opt/spark/shared-data/pyspark_job.py '
-    #              '{{ ti.xcom_pull(task_ids="upload_raw_data_to_s3", key="total_s3_key") }}'
-    #             )
     clean_up_task = PythonOperator(
         task_id='clean_up_folder',
         python_callable=clean_up_folder,
         provide_context=True
     )
 
-download_task >> upload_raw_data_task >> [spark_submit_task, clean_up_task]
+download_task >> upload_raw_data_task >> spark_submit_task>> clean_up_task
 
 
 
