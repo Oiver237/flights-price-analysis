@@ -4,3 +4,8 @@ USER root
 RUN mkdir -p /opt/spark/logs && chmod 777 /opt/spark/logs
 # RUN pip install apache-airflow apache-airflow-providers-apache-spark
 COPY spark-defaults.conf /opt/spark/conf/spark-defaults.conf
+RUN chown -R spark:spark /opt/spark
+
+USER spark
+
+WORKDIR /opt/spark

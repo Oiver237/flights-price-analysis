@@ -8,3 +8,4 @@ logs/
 requirements3.txt
 plugins/
 scripts/
+.vscode/
