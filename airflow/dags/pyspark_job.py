@@ -33,7 +33,7 @@ def main(s3_key):
 
     df = spark.read.option("multiline","true").json(s3_key)
 
-    # Table 1: search_metadata
+    # search_metadata
     search_metadata_df = df.select(
         col("search_metadata.id").alias("search_id"),
         col("search_metadata.status"),
@@ -46,7 +46,7 @@ def main(s3_key):
         col("search_metadata.total_time_taken")
     ).distinct()
 
-    # Table 2: search_parameters
+    # search_parameters
     search_parameters_df = df.select(
         col("search_metadata.id").alias("search_id"),
         col("search_parameters.engine"),
@@ -59,7 +59,7 @@ def main(s3_key):
         col("search_parameters.currency")
     ).distinct()
 
-    # Table 3: price_history
+    # price_history
     price_history_df = df.select(
         col("search_metadata.id").alias("search_id"),
         explode("price_insights.price_history").alias("price_history")
@@ -69,15 +69,13 @@ def main(s3_key):
         col("price_history")[1].alias("price")
     ).withColumn("date_time", from_unixtime(col("timestamp"), "yyyy-MM-dd HH:mm:ss"))
 
-    # Fonction pour traiter les vols (best_flights et other_flights)
+
     def process_flights_data(flights_column, flight_type):
-        # Exploser les vols
         flights_base = df.select(
             col("search_metadata.id").alias("search_id"),
             explode(flights_column).alias("flight_group")
         )
         
-        # Extraire les informations des vols avec leg_number
         flights_exploded = flights_base.select(
             col("search_id"),
             col("flight_group.total_duration"),
@@ -91,8 +89,7 @@ def main(s3_key):
             posexplode("flight_group.flights").alias("leg_number", "flight"),
             lit(flight_type).alias("flight_type")
         )
-        
-        # Structurer les données des vols
+
         flights_structured = flights_exploded.select(
             col("search_id"),
             col("departure_token"),
@@ -123,22 +120,18 @@ def main(s3_key):
         
         return flights_structured
 
-    # Traiter best_flights et other_flights
     best_flights_df = process_flights_data("best_flights", "best")
     other_flights_df = process_flights_data("other_flights", "other")
 
-    # Table 4: flights (union de best_flights et other_flights)
+    # flights (union de best_flights et other_flights)
     flights_df = best_flights_df.unionByName(other_flights_df)
 
-    # Fonction pour traiter les escales (layovers) - CORRECTION COMPLÈTE
     def process_layovers_data(flights_column, flight_type):
-        # Exploser les vols pour obtenir les layovers
         layovers_base = df.select(
             col("search_metadata.id").alias("search_id"),
             explode(flights_column).alias("flight_group")
         )
-        
-        # Extraire les layovers avec leur numéro
+
         layovers_exploded = layovers_base.select(
             col("search_id"),
             col("flight_group.departure_token"),
@@ -146,11 +139,9 @@ def main(s3_key):
             lit(flight_type).alias("flight_type")
         )
         
-        # Vérifier si le champ overnight existe dans le schéma
         layover_fields = [field.name for field in layovers_exploded.schema["layover"].dataType]
         
         if "overnight" in layover_fields:
-            # Si le champ existe, l'utiliser
             layovers_structured = layovers_exploded.select(
                 col("search_id"),
                 col("departure_token"),
@@ -162,7 +153,6 @@ def main(s3_key):
                 col("flight_type")
             )
         else:
-            # Si le champ n'existe pas, utiliser False par défaut
             layovers_structured = layovers_exploded.select(
                 col("search_id"),
                 col("departure_token"),
@@ -176,11 +166,10 @@ def main(s3_key):
         
         return layovers_structured
 
-    # Traiter les layovers pour best_flights et other_flights
     best_layovers_df = process_layovers_data("best_flights", "best")
     other_layovers_df = process_layovers_data("other_flights", "other")
 
-    # Table 5: layovers (union de best et other layovers)
+    # layovers (union de best et other layovers)
     layovers_df = best_layovers_df.unionByName(other_layovers_df)
 
     flights_final = flights_df \
@@ -192,7 +181,6 @@ def main(s3_key):
         .withColumn("month", month(col("departure_datetime"))) \
         .drop("departure_time", "arrival_time")
 
-    # Afficher les résultats
     print("=== SEARCH_METADATA ===")
     search_metadata_df.show(truncate=False)
 
@@ -222,30 +210,29 @@ def main(s3_key):
     print(f"Other Layovers: {other_layovers_df.count()}")
     print(f"Total Layovers: {layovers_df.count()}")
 
-    # Écrire les données dans S3
     now = datetime.now()
     date_str = now.strftime("%d-%m-%Y")
     s3_base_path = f"s3a://{S3_BUCKET}/{S3_PREFIX}/olivier/"
 
-    # Table 1: search_metadata
+    # search_metadata
     search_metadata_df \
         .write.mode("append") \
         .option("compression", "snappy") \
         .parquet(f"{s3_base_path}/search_metadata/{date_str}/")
 
-    # Table 2: search_parameters
+    # search_parameters
     search_parameters_df \
         .write.mode("append") \
         .option("compression", "snappy") \
         .parquet(f"{s3_base_path}/search_parameters/{date_str}/")
 
-    # Table 3: price_history
+    # price_history
     price_history_df \
         .write.mode("append") \
         .option("compression", "snappy") \
         .parquet(f"{s3_base_path}/price_history/{date_str}/")
 
-    # Table 4: flights (partitionnée par année et mois)
+    # flights (partitionnée par année et mois)
     flights_final \
         .write.mode("append") \
         .option("compression", "snappy") \
