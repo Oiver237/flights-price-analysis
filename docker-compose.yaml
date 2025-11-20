@@ -28,7 +28,7 @@ x-airflow-common:
     - ./airflow/plugins:/opt/airflow/plugins
     - ./requirements.txt:/opt/airflow/requirements.txt
     # - /var/run/docker.sock:/var/run/docker.sock:rw 
-    - ./data:/opt/spark/shared-data
+    - ./spark_job:/opt/spark/shared-data
   user: "${AIRFLOW_UID}:0"
   depends_on:
     postgres:
@@ -113,7 +113,7 @@ services:
       - S3_CLEANSED_PREFIX=${S3_CLEANSED_PREFIX}
     volumes:
       - spark-data:/opt/spark/data
-      - ./data:/opt/spark/shared-data 
+      - ./spark_job:/opt/spark/shared-data 
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080"]
       interval: 10s
@@ -138,7 +138,7 @@ services:
       - SPARK_MASTER=spark://spark-master:7077
     volumes:
       - spark-data:/opt/spark/data
-      - ./data:/opt/spark/shared-data  
+      - ./spark_job:/opt/spark/shared-data  
     networks:
       - projet-fil-rouge
 

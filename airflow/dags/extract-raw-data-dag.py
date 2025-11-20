@@ -131,7 +131,7 @@ def run_spark_job(**kwargs):
         '--conf', f'spark.hadoop.fs.s3a.secret.key={aws_secret_key}',
         '--conf', 'spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider',
         '--conf', 'spark.hadoop.fs.s3a.endpoint=s3.amazonaws.com',
-        '/opt/airflow/dags/pyspark_job.py',
+        '/opt/spark/shared-data/pyspark_job.py',
         s3_key
     ]
     try:
