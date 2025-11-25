@@ -18,10 +18,11 @@ x-airflow-common:
     S3_BUCKET: ${S3_BUCKET}
     S3_RAW_PREFIX: ${S3_RAW_PREFIX}
     S3_CLEANSED_PREFIX: ${S3_CLEANSED_PREFIX}
-    API_KEY: ${API_KEY}
     SPARK_HOME: /opt/spark
     SPARK_MASTER_URL: spark://spark-master:7077
     SPARK_CONNECTION_METHOD: "session"
+    SERPAPI_KEYS: ${SERPAPI_KEYS}
+    CITY_IDS: ${CITY_IDS}
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/logs:/opt/airflow/logs
