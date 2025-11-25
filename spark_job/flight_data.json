@@ -1,0 +1,1111 @@
+{
+   "search_metadata": {
+      "id": "69246be952acc6acc9bcf2c5",
+      "status": "Success",
+      "json_endpoint": "https://serpapi.com/searches/39206cdd7af1759d/69246be952acc6acc9bcf2c5.json",
+      "created_at": "2025-11-24 14:30:01 UTC",
+      "processed_at": "2025-11-24 14:30:01 UTC",
+      "google_flights_url": "https://www.google.com/travel/flights?hl=fr&gl=fr&curr=EUR&tfs=CBwQAhoeEgoyMDI2LTAzLTE1agcIARIDQ0RHcgcIARIDUEVLGh4SCjIwMjYtMDMtMzBqBwgBEgNQRUtyBwgBEgNDREdCAQFIAXABmAEB&tfu=EgIIAQ",
+      "raw_html_file": "https://serpapi.com/searches/39206cdd7af1759d/69246be952acc6acc9bcf2c5.html",
+      "prettify_html_file": "https://serpapi.com/searches/39206cdd7af1759d/69246be952acc6acc9bcf2c5.prettify",
+      "total_time_taken": 2.68
+   },
+   "search_parameters": {
+      "engine": "google_flights",
+      "hl": "fr",
+      "gl": "fr",
+      "departure_id": "CDG",
+      "arrival_id": "PEK",
+      "outbound_date": "2026-03-15",
+      "return_date": "2026-03-30",
+      "currency": "EUR",
+      "deep_search": true
+   },
+   "best_flights": [
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 10:15"
+               },
+               "arrival_airport": {
+                  "name": "Brussels Airport",
+                  "id": "BRU",
+                  "time": "2026-03-15 11:10"
+               },
+               "duration": 55,
+               "airplane": "Airbus A320",
+               "airline": "Brussels Airlines",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/SN.png",
+               "travel_class": "Economy",
+               "flight_number": "SN 3634",
+               "legroom": "74 cm",
+               "extensions": [
+                  "Below average legroom (74 cm)",
+                  "Carbon emissions estimate: 53 kg"
+               ],
+               "often_delayed_by_over_30_min": true
+            },
+            {
+               "departure_airport": {
+                  "name": "Brussels Airport",
+                  "id": "BRU",
+                  "time": "2026-03-15 12:20"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-16 04:40"
+               },
+               "duration": 560,
+               "airplane": "Boeing 787",
+               "airline": "Hainan",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/HU.png",
+               "travel_class": "Economy",
+               "flight_number": "HU 492",
+               "legroom": "79 cm",
+               "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 462 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "layovers": [
+            {
+               "duration": 70,
+               "name": "Brussels Airport",
+               "id": "BRU"
+            }
+         ],
+         "total_duration": 685,
+         "carbon_emissions": {
+            "this_flight": 516000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -14
+         },
+         "price": 594,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+         "extensions": [
+            "1 checked bag up to 23 kg included",
+            "Partial refund for cancellations",
+            "Ticket changes for a fee",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ3hUVGpNMk16UjhTRlUwT1RJYUN3aUIwQU1RQWhvRFJWVlNPQnh3czVjRSIsW1siQ0RHIiwiMjAyNi0wMy0xNSIsIkJSVSIsbnVsbCwiU04iLCIzNjM0Il0sWyJCUlUiLCIyMDI2LTAzLTE1IiwiUEVLIixudWxsLCJIVSIsIjQ5MiJdXV0="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 12:25"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Shanghai-Pudong",
+                  "id": "PVG",
+                  "time": "2026-03-16 07:00"
+               },
+               "duration": 695,
+               "airplane": "Boeing 777",
+               "airline": "China Eastern",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/MU.png",
+               "travel_class": "Economy",
+               "flight_number": "MU 554",
+               "legroom": "81 cm",
+               "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 688 kg"
+               ],
+               "overnight": true
+            },
+            {
+               "departure_airport": {
+                  "name": "Aéroport international de Shanghai-Pudong",
+                  "id": "PVG",
+                  "time": "2026-03-16 10:35"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-16 13:00"
+               },
+               "duration": 145,
+               "airplane": "Airbus A320",
+               "airline": "China Eastern",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/MU.png",
+               "travel_class": "Economy",
+               "flight_number": "MU 5155",
+               "legroom": "76 cm",
+               "extensions": [
+                  "Average legroom (76 cm)",
+                  "Carbon emissions estimate: 126 kg"
+               ]
+            }
+         ],
+         "layovers": [
+            {
+               "duration": 215,
+               "name": "Aéroport international de Shanghai-Pudong",
+               "id": "PVG"
+            }
+         ],
+         "total_duration": 1055,
+         "carbon_emissions": {
+            "this_flight": 815000,
+            "typical_for_this_route": 598000,
+            "difference_percent": 36
+         },
+         "price": 607,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/MU.png",
+         "extensions": [
+            "1 checked bag up to 23 kg included",
+            "Full refund for cancellations",
+            "Free change, possible fare difference",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ3hOVlRVMU5IeE5WVFV4TlRVYUN3ai8yUU1RQWhvRFJWVlNPQnh3OWFJRSIsW1siQ0RHIiwiMjAyNi0wMy0xNSIsIlBWRyIsbnVsbCwiTVUiLCI1NTQiXSxbIlBWRyIsIjIwMjYtMDMtMTYiLCJQRUsiLG51bGwsIk1VIiwiNTE1NSJdXV0="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 23:20"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-16 17:35"
+               },
+               "duration": 675,
+               "airplane": "Boeing 787",
+               "airline": "Air France",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+               "travel_class": "Economy",
+               "flight_number": "AF 382",
+               "ticket_also_sold_by": [
+                  "China Eastern"
+               ],
+               "legroom": "79 cm",
+               "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 439 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "total_duration": 675,
+         "carbon_emissions": {
+            "this_flight": 439000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -27
+         },
+         "price": 800,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+         "extensions": [
+            "Checked baggage for a fee",
+            "Full refund for cancellations",
+            "Free change, possible fare difference",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ1ZCUmpNNE1ob0xDUC93QkJBQ0dnTkZWVkk0SEhDVDBRVT0iLFtbIkNERyIsIjIwMjYtMDMtMTUiLCJQRUsiLG51bGwsIkFGIiwiMzgyIl1dXQ=="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 12:25"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-16 05:30"
+               },
+               "duration": 605,
+               "airplane": "Boeing 777",
+               "airline": "Air China",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/CA.png",
+               "travel_class": "Economy",
+               "flight_number": "CA 876",
+               "legroom": "81 cm",
+               "extensions": [
+                  "Above average legroom (81 cm)",
+                  "In-seat power outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 568 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "total_duration": 605,
+         "carbon_emissions": {
+            "this_flight": 568000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -5
+         },
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/CA.png",
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ1ZEUVRnM05qZ2MiLFtbIkNERyIsIjIwMjYtMDMtMTUiLCJQRUsiLG51bGwsIkNBIiwiODc2Il1dXQ=="
+      }
+   ],
+   "other_flights": [
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 08:45"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport de Prague-Václav-Havel",
+                  "id": "PRG",
+                  "time": "2026-03-15 10:30"
+               },
+               "duration": 105,
+               "airplane": "Airbus A220-300 Passenger",
+               "airline": "Smartwings",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/QS.png",
+               "travel_class": "Economy",
+               "flight_number": "QS 1033",
+               "legroom": "76 cm",
+               "extensions": [
+                  "Average legroom (76 cm)",
+                  "In-seat USB outlet",
+                  "Stream media to your device",
+                  "Carbon emissions estimate: 96 kg"
+               ]
+            },
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Prague-Václav-Havel",
+                  "id": "PRG",
+                  "time": "2026-03-16 13:00"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-17 05:15"
+               },
+               "duration": 555,
+               "airplane": "Airbus A330",
+               "airline": "Hainan",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/HU.png",
+               "travel_class": "Economy",
+               "flight_number": "HU 7938",
+               "legroom": "79 cm",
+               "extensions": [
+                  "Average legroom (79 cm)",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 489 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "layovers": [
+            {
+               "duration": 1590,
+               "name": "Aéroport de Prague-Václav-Havel",
+               "id": "PRG",
+               "overnight": true
+            }
+         ],
+         "total_duration": 2250,
+         "carbon_emissions": {
+            "this_flight": 585000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -2
+         },
+         "price": 580,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+         "extensions": [
+            "1 checked bag up to 23 kg included",
+            "Full refund for cancellations",
+            "Free change, possible fare difference",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZzFSVXpFd016TjhTRlUzT1RNNEdnc0l1OFFERUFJYUEwVlZVamdjY0ltS0JBPT0iLFtbIkNERyIsIjIwMjYtMDMtMTUiLCJQUkciLG51bGwsIlFTIiwiMTAzMyJdLFsiUFJHIiwiMjAyNi0wMy0xNiIsIlBFSyIsbnVsbCwiSFUiLCI3OTM4Il1dXQ=="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 20:15"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport de Prague-Václav-Havel",
+                  "id": "PRG",
+                  "time": "2026-03-15 21:55"
+               },
+               "duration": 100,
+               "airplane": "Airbus A220-300 Passenger",
+               "airline": "Smartwings",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/QS.png",
+               "travel_class": "Economy",
+               "flight_number": "QS 1037",
+               "legroom": "76 cm",
+               "extensions": [
+                  "Average legroom (76 cm)",
+                  "In-seat USB outlet",
+                  "Stream media to your device",
+                  "Carbon emissions estimate: 96 kg"
+               ]
+            },
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Prague-Václav-Havel",
+                  "id": "PRG",
+                  "time": "2026-03-16 13:00"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-17 05:15"
+               },
+               "duration": 555,
+               "airplane": "Airbus A330",
+               "airline": "Hainan",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/HU.png",
+               "travel_class": "Economy",
+               "flight_number": "HU 7938",
+               "legroom": "79 cm",
+               "extensions": [
+                  "Average legroom (79 cm)",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 489 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "layovers": [
+            {
+               "duration": 905,
+               "name": "Aéroport de Prague-Václav-Havel",
+               "id": "PRG",
+               "overnight": true
+            }
+         ],
+         "total_duration": 1560,
+         "carbon_emissions": {
+            "this_flight": 585000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -2
+         },
+         "price": 602,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+         "extensions": [
+            "1 checked bag up to 23 kg included",
+            "Full refund for cancellations",
+            "Free change, possible fare difference",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZzFSVXpFd016ZDhTRlUzT1RNNEdnc0lqOVlERUFJYUEwVlZVamdjY0xtZUJBPT0iLFtbIkNERyIsIjIwMjYtMDMtMTUiLCJQUkciLG51bGwsIlFTIiwiMTAzNyJdLFsiUFJHIiwiMjAyNi0wMy0xNiIsIlBFSyIsbnVsbCwiSFUiLCI3OTM4Il1dXQ=="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 20:05"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Shanghai-Pudong",
+                  "id": "PVG",
+                  "time": "2026-03-16 14:35"
+               },
+               "duration": 690,
+               "airplane": "Boeing 777",
+               "airline": "China Eastern",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/MU.png",
+               "travel_class": "Economy",
+               "flight_number": "MU 570",
+               "legroom": "81 cm",
+               "extensions": [
+                  "Above average legroom (81 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 688 kg"
+               ],
+               "overnight": true
+            },
+            {
+               "departure_airport": {
+                  "name": "Aéroport international de Shanghai-Pudong",
+                  "id": "PVG",
+                  "time": "2026-03-16 19:10"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-16 21:50"
+               },
+               "duration": 160,
+               "airplane": "Airbus A321",
+               "airline": "China Eastern",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/MU.png",
+               "travel_class": "Economy",
+               "flight_number": "MU 5163",
+               "legroom": "74 cm",
+               "extensions": [
+                  "Below average legroom (74 cm)",
+                  "In-seat USB outlet",
+                  "Carbon emissions estimate: 126 kg"
+               ]
+            }
+         ],
+         "layovers": [
+            {
+               "duration": 275,
+               "name": "Aéroport international de Shanghai-Pudong",
+               "id": "PVG"
+            }
+         ],
+         "total_duration": 1125,
+         "carbon_emissions": {
+            "this_flight": 814000,
+            "typical_for_this_route": 598000,
+            "difference_percent": 36
+         },
+         "price": 607,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/MU.png",
+         "extensions": [
+            "1 checked bag up to 23 kg included",
+            "Full refund for cancellations",
+            "Free change, possible fare difference",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ3hOVlRVM01IeE5WVFV4TmpNYUN3ai8yUU1RQWhvRFJWVlNPQnh3OWFJRSIsW1siQ0RHIiwiMjAyNi0wMy0xNSIsIlBWRyIsbnVsbCwiTVUiLCI1NzAiXSxbIlBWRyIsIjIwMjYtMDMtMTYiLCJQRUsiLG51bGwsIk1VIiwiNTE2MyJdXV0="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 18:10"
+               },
+               "arrival_airport": {
+                  "name": "Amsterdam Airport Schiphol",
+                  "id": "AMS",
+                  "time": "2026-03-15 19:35"
+               },
+               "duration": 85,
+               "airplane": "Airbus A220-300 Passenger",
+               "airline": "Air France",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/AF.png",
+               "travel_class": "Economy",
+               "flight_number": "AF 1440",
+               "ticket_also_sold_by": [
+                  "KLM"
+               ],
+               "legroom": "76 cm",
+               "extensions": [
+                  "Average legroom (76 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "Carbon emissions estimate: 59 kg"
+               ]
+            },
+            {
+               "departure_airport": {
+                  "name": "Amsterdam Airport Schiphol",
+                  "id": "AMS",
+                  "time": "2026-03-16 16:00"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-17 09:55"
+               },
+               "duration": 655,
+               "airplane": "Boeing 787",
+               "airline": "KLM",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+               "travel_class": "Economy",
+               "flight_number": "KL 897",
+               "ticket_also_sold_by": [
+                  "Air France"
+               ],
+               "legroom": "79 cm",
+               "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 440 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "layovers": [
+            {
+               "duration": 1225,
+               "name": "Amsterdam Airport Schiphol",
+               "id": "AMS",
+               "overnight": true
+            }
+         ],
+         "total_duration": 1965,
+         "carbon_emissions": {
+            "this_flight": 500000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -16
+         },
+         "price": 725,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+         "extensions": [
+            "Checked baggage for a fee",
+            "Fare non-refundable, taxes may be refundable",
+            "Ticket changes for a fee",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ3hCUmpFME5EQjhTMHc0T1RjYUN3aXN0Z1FRQWhvRFJWVlNPQnh3dlkwRiIsW1siQ0RHIiwiMjAyNi0wMy0xNSIsIkFNUyIsbnVsbCwiQUYiLCIxNDQwIl0sWyJBTVMiLCIyMDI2LTAzLTE2IiwiUEVLIixudWxsLCJLTCIsIjg5NyJdXV0="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 20:45"
+               },
+               "arrival_airport": {
+                  "name": "Amsterdam Airport Schiphol",
+                  "id": "AMS",
+                  "time": "2026-03-15 21:55"
+               },
+               "duration": 70,
+               "airplane": "Airbus A321neo",
+               "airline": "KLM",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+               "travel_class": "Economy",
+               "flight_number": "KL 1412",
+               "ticket_also_sold_by": [
+                  "Air France"
+               ],
+               "legroom": "74 cm",
+               "extensions": [
+                  "Below average legroom (74 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "Carbon emissions estimate: 41 kg"
+               ]
+            },
+            {
+               "departure_airport": {
+                  "name": "Amsterdam Airport Schiphol",
+                  "id": "AMS",
+                  "time": "2026-03-16 16:00"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-17 09:55"
+               },
+               "duration": 655,
+               "airplane": "Boeing 787",
+               "airline": "KLM",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+               "travel_class": "Economy",
+               "flight_number": "KL 897",
+               "ticket_also_sold_by": [
+                  "Air France"
+               ],
+               "legroom": "79 cm",
+               "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat power & USB outlets",
+                  "On-demand video",
+                  "Carbon emissions estimate: 440 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "layovers": [
+            {
+               "duration": 1085,
+               "name": "Amsterdam Airport Schiphol",
+               "id": "AMS",
+               "overnight": true
+            }
+         ],
+         "total_duration": 1810,
+         "carbon_emissions": {
+            "this_flight": 482000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -19
+         },
+         "price": 726,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/KL.png",
+         "extensions": [
+            "Checked baggage for a fee",
+            "Fare non-refundable, taxes may be refundable",
+            "Ticket changes for a fee",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ3hMVERFME1USjhTMHc0T1RjYUN3akx0Z1FRQWhvRFJWVlNPQnh3NFkwRiIsW1siQ0RHIiwiMjAyNi0wMy0xNSIsIkFNUyIsbnVsbCwiS0wiLCIxNDEyIl0sWyJBTVMiLCIyMDI2LTAzLTE2IiwiUEVLIixudWxsLCJLTCIsIjg5NyJdXV0="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 07:00"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international d’Istanbul",
+                  "id": "IST",
+                  "time": "2026-03-15 12:40"
+               },
+               "duration": 220,
+               "airplane": "Airbus A321neo",
+               "airline": "Turkish Airlines",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+               "travel_class": "Economy",
+               "flight_number": "TK 1830",
+               "legroom": "76 cm",
+               "extensions": [
+                  "Average legroom (76 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 178 kg"
+               ]
+            },
+            {
+               "departure_airport": {
+                  "name": "Aéroport international d’Istanbul",
+                  "id": "IST",
+                  "time": "2026-03-15 17:05"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-16 07:15"
+               },
+               "duration": 550,
+               "airplane": "Boeing 787",
+               "airline": "Turkish Airlines",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+               "travel_class": "Economy",
+               "flight_number": "TK 196",
+               "legroom": "79 cm",
+               "extensions": [
+                  "Average legroom (79 cm)",
+                  "Wi-Fi for a fee",
+                  "In-seat USB outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 413 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "layovers": [
+            {
+               "duration": 265,
+               "name": "Aéroport international d’Istanbul",
+               "id": "IST"
+            }
+         ],
+         "total_duration": 1035,
+         "carbon_emissions": {
+            "this_flight": 592000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -1
+         },
+         "price": 741,
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/TK.png",
+         "extensions": [
+            "1 checked bag up to 30 kg included",
+            "Full refund for cancellations",
+            "Free change, possible fare difference",
+            "Bag and fare conditions depend on the return flight"
+         ],
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ3hVU3pFNE16QjhWRXN4T1RZYUN3alh3Z1FRQWhvRFJWVlNPQnh3MjVzRiIsW1siQ0RHIiwiMjAyNi0wMy0xNSIsIklTVCIsbnVsbCwiVEsiLCIxODMwIl0sWyJJU1QiLCIyMDI2LTAzLTE1IiwiUEVLIixudWxsLCJUSyIsIjE5NiJdXV0="
+      },
+      {
+         "flights": [
+            {
+               "departure_airport": {
+                  "name": "Aéroport de Paris-Charles de Gaulle",
+                  "id": "CDG",
+                  "time": "2026-03-15 19:30"
+               },
+               "arrival_airport": {
+                  "name": "Aéroport international de Pékin",
+                  "id": "PEK",
+                  "time": "2026-03-16 12:30"
+               },
+               "duration": 600,
+               "airplane": "Boeing 777",
+               "airline": "Air China",
+               "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/CA.png",
+               "travel_class": "Economy",
+               "flight_number": "CA 934",
+               "legroom": "81 cm",
+               "extensions": [
+                  "Above average legroom (81 cm)",
+                  "In-seat power outlet",
+                  "On-demand video",
+                  "Carbon emissions estimate: 568 kg"
+               ],
+               "overnight": true
+            }
+         ],
+         "total_duration": 600,
+         "carbon_emissions": {
+            "this_flight": 568000,
+            "typical_for_this_route": 598000,
+            "difference_percent": -5
+         },
+         "type": "Round trip",
+         "airline_logo": "https://www.gstatic.com/flights/airline_logos/70px/CA.png",
+         "departure_token": "WyJDalJJYWxkS1Zrb3dTbUpNZDFWQlVHbGtWMmRDUnkwdExTMHRMUzB0TFMxNWJHWjFNa0ZCUVVGQlIydHJZUzF2VEdNelowOUJFZ1ZEUVRrek5EZ2MiLFtbIkNERyIsIjIwMjYtMDMtMTUiLCJQRUsiLG51bGwsIkNBIiwiOTM0Il1dXQ=="
+      }
+   ],
+   "price_insights": {
+      "lowest_price": 580,
+      "price_level": "typical",
+      "typical_price_range": [
+         500,
+         730
+      ],
+      "price_history": [
+         [
+            1758751200,
+            729
+         ],
+         [
+            1758837600,
+            729
+         ],
+         [
+            1758924000,
+            729
+         ],
+         [
+            1759010400,
+            741
+         ],
+         [
+            1759096800,
+            741
+         ],
+         [
+            1759183200,
+            741
+         ],
+         [
+            1759269600,
+            741
+         ],
+         [
+            1759356000,
+            741
+         ],
+         [
+            1759442400,
+            741
+         ],
+         [
+            1759528800,
+            741
+         ],
+         [
+            1759615200,
+            714
+         ],
+         [
+            1759701600,
+            741
+         ],
+         [
+            1759788000,
+            741
+         ],
+         [
+            1759874400,
+            741
+         ],
+         [
+            1759960800,
+            741
+         ],
+         [
+            1760047200,
+            741
+         ],
+         [
+            1760133600,
+            741
+         ],
+         [
+            1760220000,
+            741
+         ],
+         [
+            1760306400,
+            741
+         ],
+         [
+            1760392800,
+            741
+         ],
+         [
+            1760479200,
+            741
+         ],
+         [
+            1760565600,
+            741
+         ],
+         [
+            1760652000,
+            717
+         ],
+         [
+            1760738400,
+            712
+         ],
+         [
+            1760824800,
+            712
+         ],
+         [
+            1760911200,
+            712
+         ],
+         [
+            1760997600,
+            712
+         ],
+         [
+            1761084000,
+            712
+         ],
+         [
+            1761170400,
+            643
+         ],
+         [
+            1761256800,
+            643
+         ],
+         [
+            1761343200,
+            576
+         ],
+         [
+            1761429600,
+            576
+         ],
+         [
+            1761519600,
+            576
+         ],
+         [
+            1761606000,
+            575
+         ],
+         [
+            1761692400,
+            575
+         ],
+         [
+            1761778800,
+            575
+         ],
+         [
+            1761865200,
+            575
+         ],
+         [
+            1761951600,
+            576
+         ],
+         [
+            1762038000,
+            578
+         ],
+         [
+            1762124400,
+            578
+         ],
+         [
+            1762210800,
+            694
+         ],
+         [
+            1762297200,
+            694
+         ],
+         [
+            1762383600,
+            607
+         ],
+         [
+            1762470000,
+            607
+         ],
+         [
+            1762556400,
+            607
+         ],
+         [
+            1762642800,
+            607
+         ],
+         [
+            1762729200,
+            594
+         ],
+         [
+            1762815600,
+            594
+         ],
+         [
+            1762902000,
+            594
+         ],
+         [
+            1762988400,
+            593
+         ],
+         [
+            1763074800,
+            593
+         ],
+         [
+            1763161200,
+            593
+         ],
+         [
+            1763247600,
+            593
+         ],
+         [
+            1763334000,
+            593
+         ],
+         [
+            1763420400,
+            557
+         ],
+         [
+            1763506800,
+            557
+         ],
+         [
+            1763593200,
+            578
+         ],
+         [
+            1763679600,
+            557
+         ],
+         [
+            1763766000,
+            557
+         ],
+         [
+            1763852400,
+            580
+         ],
+         [
+            1763938800,
+            580
+         ]
+      ]
+   },
+   "airports": [
+      {
+         "departure": [
+            {
+               "airport": {
+                  "id": "CDG",
+                  "name": "Aéroport de Paris-Charles de Gaulle"
+               },
+               "city": "Paris",
+               "country": "France",
+               "country_code": "FR",
+               "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGx8ii2KbSDdbdzfKye5oDN2bwBA6audqI7XUEf2iMRZezpn_ZbQe1ZIuvUSH-8XOMe958umDwSsAF1w",
+               "thumbnail": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyQJ-woNs0iO22mPSkmRUM5gcsTbbYeypQ6BBTeFxXr90mqTxZl57Fdq2CDuLn4w7cKZ8TT9_zZhOpF57rIpA7yWKQnqKvkKIf9Y-qJDo"
+            }
+         ],
+         "arrival": [
+            {
+               "airport": {
+                  "id": "PEK",
+                  "name": "Aéroport international de Pékin"
+               },
+               "city": "Pékin",
+               "country": "Chine",
+               "country_code": "CN",
+               "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ9v_tNYxaummsU2qbFn8zuYzkcG0x6qCvqB2gbBnx-2FVlZZPsnkvUXGk07vxotk-0vRQMUYCjj2d4Wg",
+               "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSzsj_yw6o3vb8i54_D21VgI5rTohxexQkZ0TrZKDKJwTSKw2yqnRYLoIcBWIY50BlHo-OPMm68zbUO-qnFvmQmm6jvtWPwo7WOzjNGX_A"
+            }
+         ]
+      },
+      {
+         "departure": [
+            {
+               "airport": {
+                  "id": "PEK",
+                  "name": "Aéroport international de Pékin"
+               },
+               "city": "Pékin",
+               "country": "Chine",
+               "country_code": "CN",
+               "image": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ9v_tNYxaummsU2qbFn8zuYzkcG0x6qCvqB2gbBnx-2FVlZZPsnkvUXGk07vxotk-0vRQMUYCjj2d4Wg",
+               "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSzsj_yw6o3vb8i54_D21VgI5rTohxexQkZ0TrZKDKJwTSKw2yqnRYLoIcBWIY50BlHo-OPMm68zbUO-qnFvmQmm6jvtWPwo7WOzjNGX_A"
+            }
+         ],
+         "arrival": [
+            {
+               "airport": {
+                  "id": "CDG",
+                  "name": "Aéroport de Paris-Charles de Gaulle"
+               },
+               "city": "Paris",
+               "country": "France",
+               "country_code": "FR",
+               "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQGx8ii2KbSDdbdzfKye5oDN2bwBA6audqI7XUEf2iMRZezpn_ZbQe1ZIuvUSH-8XOMe958umDwSsAF1w",
+               "thumbnail": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSyQJ-woNs0iO22mPSkmRUM5gcsTbbYeypQ6BBTeFxXr90mqTxZl57Fdq2CDuLn4w7cKZ8TT9_zZhOpF57rIpA7yWKQnqKvkKIf9Y-qJDo"
+            }
+         ]
+      }
+   ]
+}
