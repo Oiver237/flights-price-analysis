@@ -295,7 +295,7 @@ def main(s3_key):
         now = datetime.now()
         date_str = now.strftime("%d-%m-%Y")
         time_str = now.strftime("%H-%M")
-        s3_base_path = f"s3a://{S3_BUCKET}/{S3_PREFIX}/olivier/"
+        s3_base_path = f"s3a://{S3_BUCKET}/{S3_PREFIX}/"
 
         write_operations = [
             ("search_metadata", search_metadata_df),
