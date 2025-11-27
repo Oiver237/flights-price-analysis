@@ -165,7 +165,6 @@ def upload_to_s3(**kwargs):
     time_str = now.strftime('%H-%M')
 
     s3_key = (f'{S3_PREFIX}/'
-              "olivier/"
               f"departure=CDG/"
               f"arrival={arrival_city}/"
               f"date={date_str}/"
