@@ -23,7 +23,6 @@ dnspython
 email-validator
 fastapi
 fsspec
-google-serp-api
 google_search_results
 googleapis-common-protos
 greenlet
