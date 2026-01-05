@@ -18,7 +18,8 @@ RUN apt-get update && \
         python3-dev \
         libssl-dev \
         libffi-dev \
-        pkg-config && \
+        pkg-config \
+        procps && \
     update-ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
@@ -48,24 +49,25 @@ ENV PYSPARK_DRIVER_PYTHON=python3
 ENV SPARK_JARS_IVY=/home/airflow/.ivy2
 RUN mkdir -p $SPARK_JARS_IVY && chown -R airflow:root $SPARK_JARS_IVY
 
-# Default Spark config (repos + Ivy path)
+# Default Spark config (repos + Ivy path + S3A impl)
+# NOTE: we REMOVE spark.jars.packages to avoid runtime Ivy resolution
 RUN mkdir -p /opt/spark/conf && \
     printf "%s\n" \
       "spark.jars.repositories https://repo1.maven.org/maven2" \
       "spark.jars.ivy /home/airflow/.ivy2" \
+      "spark.hadoop.fs.s3a.impl org.apache.hadoop.fs.s3a.S3AFileSystem" \
     > /opt/spark/conf/spark-defaults.conf && \
     chown -R airflow:root /opt/spark/conf
 
-# (Optional) Pre-resolve Spark cloud bundle during build (best-effort)
-RUN /opt/spark/bin/spark-submit \
-      --master local[1] \
-      --conf spark.ui.enabled=false \
-      --conf spark.eventLog.enabled=false \
-      --conf spark.jars.ivy=/home/airflow/.ivy2 \
-      --repositories https://repo1.maven.org/maven2 \
-      --packages org.apache.spark:spark-hadoop-cloud_2.12:3.5.0 \
-      --class org.apache.spark.examples.SparkPi \
-      $SPARK_HOME/examples/jars/spark-examples_2.12-3.5.0.jar 1 || true
+# --------------------------------
+# Vendor S3A jars (offline-friendly)
+# --------------------------------
+# Use versions compatible with Hadoop 3.3.x in Spark 3.5
+# hadoop-aws provides the S3A connector; aws-java-sdk-bundle provides AWS SDK
+RUN wget -q -P /opt/spark/jars \
+    https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.4/hadoop-aws-3.3.4.jar && \
+    wget -q -P /opt/spark/jars \
+    https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.262/aws-java-sdk-bundle-1.12.262.jar
 
 # -------------------------------
 # Airflow directories
@@ -76,10 +78,12 @@ RUN mkdir -p /opt/airflow/logs /opt/airflow/dags /opt/airflow/plugins && \
 # --------------------------------
 # Install Python dependencies
 # --------------------------------
-# Airflow base images require pip to run as 'airflow' user.
 USER airflow
-# --user installs to ~/.local under /home/airflow (expected by the base image)
 RUN pip install --no-cache-dir --user -r /opt/airflow/requirements.txt
+
+# Healthcheck to catch regressions early
+# HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+#   CMD bash -lc "which ps >/dev/null && spark-submit --version >/dev/null && ls /opt/spark/jars | grep -E 'hadoop-aws|aws-java-sdk-bundle' >/dev/null"
 
 # Runtime as 'airflow'
 ENTRYPOINT ["/entrypoint"]

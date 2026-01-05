@@ -6,7 +6,6 @@ x-airflow-common:
     dockerfile: airflow.Dockerfile
   environment:
     &airflow-common-env
-    AIRFLOW_CONN_SPARK_DEFAULT: spark://spark-master:7077
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/${POSTGRES_DB}"
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
@@ -18,23 +17,15 @@ x-airflow-common:
     S3_BUCKET: ${S3_BUCKET}
     S3_RAW_PREFIX: ${S3_RAW_PREFIX}
     S3_CLEANSED_PREFIX: ${S3_CLEANSED_PREFIX}
-    SPARK_HOME: /opt/spark
-    SPARK_MASTER_URL: spark://spark-master:7077
-    SPARK_CONNECTION_METHOD: "session"
     SERPAPI_KEYS: ${SERPAPI_KEYS}
     CITY_IDS: ${CITY_IDS}
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/logs:/opt/airflow/logs
     - ./airflow/plugins:/opt/airflow/plugins
-    # - ./requirements.txt:/opt/airflow/requirements.txt
-    # - /var/run/docker.sock:/var/run/docker.sock:rw 
-    - ./spark_job:/opt/spark/shared-data
   user: "${AIRFLOW_UID}:0"
   depends_on:
     postgres:
-      condition: service_healthy
-    spark-master:
       condition: service_healthy
   networks:
     - projet-fil-rouge
@@ -90,60 +81,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-
-    
-  spark-master:
-    build: ./spark
-    container_name: spark-master
-    hostname: spark-master
-    command: >
-      /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
-      -h spark-master
-    ports:
-      - "8081:8080"
-      - "7077:7077"
-    environment:
-      - SPARK_MASTER_HOST=spark-master
-      - SPARK_MASTER_PORT=7077
-      - SPARK_MASTER_WEBUI_PORT=8080
-      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
-      - S3_BUCKET=${S3_BUCKET}
-      - S3_CLEANSED_PREFIX=${S3_CLEANSED_PREFIX}
-    volumes:
-      - spark-data:/opt/spark/data
-      - ./spark_job:/opt/spark/shared-data 
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
-    networks:
-      - projet-fil-rouge
-
-  spark-worker:
-    build: ./spark
-    container_name: spark-worker
-    command: >
-      /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
-      spark://spark-master:7077
-    depends_on:
-      spark-master:
-        condition: service_healthy
-    environment:
-      - SPARK_WORKER_CORES=2
-      - SPARK_WORKER_MEMORY=4g
-      - SPARK_MASTER=spark://spark-master:7077
-    volumes:
-      - spark-data:/opt/spark/data
-      - ./spark_job:/opt/spark/shared-data  
-    networks:
-      - projet-fil-rouge
-
+ 
 volumes:
-  spark-data:
   postgres-db-volume:
 
 networks:

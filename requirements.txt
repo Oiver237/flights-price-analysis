@@ -1,3 +1,4 @@
+
 a2wsgi
 aiosmtplib
 aiosqlite
@@ -55,14 +56,13 @@ pendulum
 pluggy
 protobuf
 psutil
-py4j
 pycparser
 pydantic
 pydantic_core
 Pygments
 pygtrie
 PyJWT
-pyspark
+# pyspark  <-- removed (Spark is shipped in the image)
 python-daemon
 python-dateutil
 python-dotenv

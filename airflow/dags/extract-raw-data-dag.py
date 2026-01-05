@@ -3,6 +3,7 @@ import subprocess
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.models import Variable
+from airflow.exceptions import AirflowException
 from datetime import datetime, timedelta
 import json
 import os
@@ -12,6 +13,7 @@ import boto3
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+
 
 def validate_environment_variables():
     """Validate that all required environment variables are set"""
@@ -33,6 +35,7 @@ def validate_environment_variables():
     if missing_vars:
         raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
 
+
 validate_environment_variables()
 
 default_args = {
@@ -47,9 +50,10 @@ default_args = {
 
 aws_access_key = os.getenv('AWS_ACCESS_KEY_ID', '')
 aws_secret_key = os.getenv('AWS_SECRET_ACCESS_KEY', '')
-aws_region     = os.getenv('AWS_DEFAULT_REGION', 'us-east-1')
-s3_bucket      = os.getenv('S3_BUCKET', 'projet-fil-rouge-s3-dev')
+aws_region = os.getenv('AWS_DEFAULT_REGION', 'us-east-1')
+s3_bucket = os.getenv('S3_BUCKET', 'projet-fil-rouge-s3-dev')
 s3_cleansed_prefix = os.getenv('S3_CLEANSED_PREFIX', 'cleansed-data')
+
 
 def get_next_api_key():
     serpapi_keys_str = os.getenv('SERPAPI_KEYS', '')
@@ -64,6 +68,7 @@ def get_next_api_key():
     logger.info(f"Using API key index {current_index}, next run will use index {next_index}")
     return api_key_to_use
 
+
 def get_next_city():
     city_id_str = os.getenv('CITY_IDS', '')
     city_ids = [c.strip() for c in city_id_str.split(',') if c.strip()]
@@ -76,6 +81,7 @@ def get_next_city():
     Variable.set('city_current_id_index', next_index)
     logger.info(f'Using {city_ids[current_index]} as arrival city.')
     return city_id_to_use
+
 
 def download_flight_data(**kwargs):
     API_KEY = get_next_api_key()
@@ -104,31 +110,25 @@ def download_flight_data(**kwargs):
     kwargs['ti'].xcom_push(key='arrival_city', value=city)
     logger.info(f'File downloaded successfully to {output_file}')
 
+
 def upload_to_s3(**kwargs):
     ti = kwargs['ti']
     output_file_path = ti.xcom_pull(task_ids='download_flight_data', key='output_file_path')
     arrival_city = ti.xcom_pull(task_ids='download_flight_data', key='arrival_city')
 
-    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-    AWS_DEFAULT_REGION = os.getenv('AWS_DEFAULT_REGION')
-    S3_BUCKET = os.getenv('S3_BUCKET')
-    S3_PREFIX = os.getenv('S3_RAW_PREFIX')
-
     session = boto3.Session(
-        aws_access_key_id=AWS_ACCESS_KEY_ID,
-        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
-        region_name=AWS_DEFAULT_REGION
+        aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+        aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
+        region_name=os.getenv('AWS_DEFAULT_REGION')
     )
     s3_ressource = session.resource('s3')
-    bucket = s3_ressource.Bucket(S3_BUCKET)
+    bucket = s3_ressource.Bucket(os.getenv('S3_BUCKET'))
 
     now = datetime.now()
     date_str = now.strftime('%d-%m-%Y')
     time_str = now.strftime('%H-%M')
-
     s3_key = (
-        f'{S3_PREFIX}/'
+        f"{os.getenv('S3_RAW_PREFIX')}/"
         f"departure=CDG/"
         f"arrival={arrival_city}/"
         f"date={date_str}/"
@@ -138,55 +138,49 @@ def upload_to_s3(**kwargs):
     bucket.upload_file(Filename=output_file_path, Key=s3_key)
 
     # path for spark job
-    total_s3_key = f's3a://{S3_BUCKET}/{s3_key}'
+    total_s3_key = f"s3a://{os.getenv('S3_BUCKET')}/{s3_key}"
     kwargs['ti'].xcom_push(key='total_s3_key', value=total_s3_key)
-    logger.info(f'File uploaded successfully to s3://{S3_BUCKET}/{s3_key}')
+    logger.info(f'File uploaded successfully to s3://{os.getenv("S3_BUCKET")}/{s3_key}')
 
-def run_spark_job(**kwargs):
-    ti = kwargs['ti']
-    s3_key = ti.xcom_pull(task_ids='upload_raw_data_to_s3', key='total_s3_key')
-    logger.info(f'Job spark running for: {s3_key}')
 
-    aws_access_key = os.getenv('AWS_ACCESS_KEY_ID')
-    aws_secret_key = os.getenv('AWS_SECRET_ACCESS_KEY')
+# def run_spark_job(**kwargs):
+#     ti = kwargs['ti']
+#     s3_key = ti.xcom_pull(task_ids='upload_raw_data_to_s3', key='total_s3_key')
+#     logger.info(f'Job spark running for: {s3_key}')
 
-    spark_command = [
-        '/opt/spark/bin/spark-submit',
-        '--master', 'spark://spark-master:7077',
-        # Use Spark's cloud integration bundle aligned to Spark 3.5
-        '--packages', 'org.apache.spark:spark-hadoop-cloud_2.12:3.5.0',
-        '--repositories', 'https://repo1.maven.org/maven2',
-        '--conf', 'spark.jars.ivy=/opt/airflow/.ivy2',
+#     spark_command = [
+#         '/opt/spark/bin/spark-submit',
+#         '--verbose',
+#         '--master', 'spark://spark-master:7077',
+#         # S3A configs (SimpleAWSCredentialsProvider for static keys)
+#         '--conf', f'spark.hadoop.fs.s3a.access.key={os.getenv("AWS_ACCESS_KEY_ID")}',
+#         '--conf', f'spark.hadoop.fs.s3a.secret.key={os.getenv("AWS_SECRET_ACCESS_KEY")}',
+#         '--conf', 'spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider',
+#         '--conf', 'spark.hadoop.fs.s3a.endpoint=s3.amazonaws.com',
+#         '--conf', 'spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem',
+#         '/opt/spark/shared-data/pyspark_job.py',
+#         s3_key
+#     ]
 
-        # S3A configs (SimpleAWSCredentialsProvider for static keys)
-        '--conf', f'spark.hadoop.fs.s3a.access.key={aws_access_key}',
-        '--conf', f'spark.hadoop.fs.s3a.secret.key={aws_secret_key}',
-        '--conf', 'spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider',
-        '--conf', 'spark.hadoop.fs.s3a.endpoint=s3.amazonaws.com',
+#     try:
+#         result = subprocess.run(
+#             spark_command,
+#             capture_output=True,
+#             text=True,
+#             timeout=600
+#         )
+#         logger.info(f"Spark stdout:\n{result.stdout}")
+#         logger.error(f"Spark stderr:\n{result.stderr}")  # keep stderr visible in logs
+#         if result.returncode != 0:
+#             raise AirflowException(f"Spark job failed with return code {result.returncode}")
+#         logger.info('Spark job completed successfully')
+#     except subprocess.TimeoutExpired:
+#         logger.error('Spark job timed out after 10 min')
+#         raise
+#     except Exception as e:
+#         logger.error(f'Failed to run spark job due to: {str(e)}')
+#         raise
 
-        '/opt/spark/shared-data/pyspark_job.py',
-        s3_key
-    ]
-
-    try:
-        result = subprocess.run(
-            spark_command,
-            capture_output=True,
-            text=True,
-            timeout=600
-        )
-        if result.returncode == 0:
-            logger.info('Spark job completed successfully')
-            logger.info(f'Spark output: {result.stdout} ')
-        else:
-            logger.error(f'Spark job failed with return code: {result.returncode}')
-            logger.error(f'Spark stderr: {result.stderr}')
-    except subprocess.TimeoutExpired:
-        logger.error('Spark job timed out after 10 min')
-        raise
-    except Exception as e:
-        logger.error(f'Failed to run spark job due to: {str(e)}')
-        raise
 
 def clean_up_folder(**kwargs):
     ti = kwargs['ti']
@@ -196,6 +190,7 @@ def clean_up_folder(**kwargs):
         logger.info(f'Local file {output_file_path} cleaned up')
     except OSError as e:
         logger.warning(f'Could not remove local file {output_file_path}: {e}')
+
 
 with DAG(
     'flight_data_pipeline',
@@ -217,10 +212,6 @@ with DAG(
         provide_context=True
     )
 
-    spark_submit_task = PythonOperator(
-        task_id='process_json_spark',
-        python_callable=run_spark_job,
-    )
 
     clean_up_task = PythonOperator(
         task_id='clean_up_folder',
@@ -228,5 +219,4 @@ with DAG(
         provide_context=True
     )
 
-download_task >> upload_raw_data_task >> [spark_submit_task, clean_up_task]
-
+download_task >> upload_raw_data_task >> clean_up_task
